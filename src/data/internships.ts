@@ -87,7 +87,7 @@ export const internships: Internship[] = [
       'Developed user-friendly interfaces and prototypes with Figma'
     ],
     technologies: ['Figma', 'Adobe Photoshop', 'Adobe Illustrator', 'Event Management', 'Leadership', 'Mentoring', 'CSR', 'Team Management'],
-    logo: 'acm and acm-w white.PNG',
+    logo: '/acm and acm-w white.PNG',
     companyUrl: 'https://www.upesacm.org',
     timeline: [
       {
