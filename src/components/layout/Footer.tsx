@@ -2,8 +2,6 @@ import React from 'react';
 import { socialLinks } from '../../data/socialLinks';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
     <footer className="bg-gradient-to-r from-background-light via-gray-50 to-background-light dark:from-background-dark dark:via-slate-800 dark:to-background-dark border-t border-border-light dark:border-border-dark">
       {/* Main Footer Content */}

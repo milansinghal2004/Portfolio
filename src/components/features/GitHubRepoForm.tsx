@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
 import { generateProjectDescriptionFromGitHub } from '../../services/geminiService';
-import { Project } from 'types';
+import { Project } from '../../types';
 
 interface GitHubRepoFormProps {
   onProjectGenerated: (project: Project) => void;

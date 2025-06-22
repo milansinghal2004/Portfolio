@@ -20,18 +20,6 @@ const PythonIcon = (): React.ReactNode => (
   </svg>
 );
 
-const TensorFlowIcon = (): React.ReactNode => (
-  <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 mr-2 text-orange-500">
-    <path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2M12,20A8,8,0,0,1,4,12A8,8,0,0,1,12,4A8,8,0,0,1,20,12A8,8,0,0,1,12,20Z"/>
-  </svg>
-);
-
-const PyTorchIcon = (): React.ReactNode => (
-  <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 mr-2 text-red-500">
-    <path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2M12,20A8,8,0,0,1,4,12A8,8,0,0,1,12,4A8,8,0,0,1,20,12A8,8,0,0,1,12,20Z"/>
-  </svg>
-);
-
 const OpenCVIcon = (): React.ReactNode => (
   <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 mr-2 text-blue-600">
     <path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2M12,20A8,8,0,0,1,4,12A8,8,0,0,1,12,4A8,8,0,0,1,20,12A8,8,0,0,1,12,20Z"/>

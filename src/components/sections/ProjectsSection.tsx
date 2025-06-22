@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Project } from 'types';
+import { Project } from '../../types';
 import ProjectCard from '../ui/ProjectCard';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';

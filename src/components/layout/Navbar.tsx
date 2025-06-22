@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ThemeToggle from '../ui/ThemeToggle';
-import { Theme } from 'types';
+import { Theme } from '../../types';
 
 interface NavbarProps {
   theme: Theme;

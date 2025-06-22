@@ -77,7 +77,7 @@ export const generateProjectDescriptionFromGitHub = async (
       },
     });
 
-    let jsonStr = response.text.trim();
+    let jsonStr = response.text?.trim() || '';
     const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
     const matchJson = jsonStr.match(fenceRegex);
     if (matchJson && matchJson[2]) {
