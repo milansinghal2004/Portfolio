@@ -127,7 +127,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 ## 📬 Contact
-- **Email:** milan.singhal@example.com
-- **LinkedIn:** [linkedin.com/in/singhalmilan92](https://linkedin.com/in/singhalmilan92l)
+- **Email:** singhalmilan92@gmail.com
+- **LinkedIn:** [linkedin.com/in/c](https://linkedin.com/in/singhalmilan92l)
 - **GitHub:** [github.com/milansinghal2004](https://github.com/milansinghal2004)
-- **Website:** [portfolio-milansinghal.netlify.app]
+- **Website:** [portfolio-milansinghal.netlify.app](http://portfolio-milansinghal.netlify.app)
