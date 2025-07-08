@@ -21,7 +21,7 @@ const AboutSection: React.FC = () => {
             style={{transitionDelay: isVisible ? '200ms' : '0ms'}}
           >
             <img
-              src="MyPic.png"
+              src="MyPic.jpg"
               alt="Developer Avatar"
               className="rounded-full shadow-2xl w-64 h-64 md:w-80 md:h-80 mx-auto object-cover border-4 border-primary dark:border-primary-light animate-pulse-subtle"
             />
