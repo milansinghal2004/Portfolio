@@ -62,7 +62,7 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({
                         <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center ml-4">
                           <img 
                             src={internship.logo} 
-                            alt={`${internship.company} logo`}
+                            alt={`Logo of ${internship.company}`}
                             className="w-8 h-8 object-contain"
                           />
                         </div>
@@ -162,7 +162,7 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({
                 <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
                   <img 
                     src={selectedInternship.logo} 
-                    alt={`${selectedInternship.company} logo`}
+                    alt={`Logo of ${selectedInternship.company}`}
                     className="w-12 h-12 object-contain"
                   />
                 </div>

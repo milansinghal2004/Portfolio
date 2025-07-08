@@ -78,7 +78,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
           <div className="space-y-4">
             <img 
               src={selectedProject.imageUrl || 'https://picsum.photos/600/400?grayscale'} 
-              alt={selectedProject.name} 
+              alt={`Project: ${selectedProject.name}`} 
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
             <p className="text-text-light/90 dark:text-text-dark/90 mb-4 leading-relaxed">

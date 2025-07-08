@@ -21,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
       <div className="relative h-48 w-full overflow-hidden">
         <img 
           src={project.imageUrl || 'https://picsum.photos/600/400?grayscale'} 
-          alt={project.name} 
+          alt={`Project: ${project.name}`} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
