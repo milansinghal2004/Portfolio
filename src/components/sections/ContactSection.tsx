@@ -17,7 +17,10 @@ interface FormErrors {
 }
 
 const SERVICE_ID = 'service_u9c1vpq';
-const TEMPLATE_ID = 'service_u9c1vpq';
+// This is the most likely issue. The Template ID should be different from the Service ID.
+// Please get the correct Template ID from your EmailJS dashboard.
+// It's under Email Templates -> Template ID.
+const TEMPLATE_ID = 'template_8oy93xo'; // <-- FIXME: Replace with your actual Template ID
 const PUBLIC_KEY = '7oSYp1H7LsKhOmxvg';
 
 const ContactSection: React.FC = () => {
@@ -58,7 +61,7 @@ const ContactSection: React.FC = () => {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          to_name: "Your Name",
+          to_name: "Milan Singhal",
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
@@ -69,6 +72,7 @@ const ContactSection: React.FC = () => {
       setFormData({ name: '', email: '', message: '' });
       setErrors({});
     } catch (error) {
+      console.error('FAILED...', error);
       setSubmitMessage('There was an error sending your message. Please try again later.');
     }
     setIsSubmitting(false);
