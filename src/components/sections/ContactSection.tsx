@@ -16,12 +16,10 @@ interface FormErrors {
   message?: string;
 }
 
-const SERVICE_ID = 'service_u9c1vpq';
-// This is the most likely issue. The Template ID should be different from the Service ID.
-// Please get the correct Template ID from your EmailJS dashboard.
-// It's under Email Templates -> Template ID.
-const TEMPLATE_ID = 'template_8oy93xo'; // <-- FIXME: Replace with your actual Template ID
-const PUBLIC_KEY = '7oSYp1H7LsKhOmxvg';
+// Securely load keys from environment variables
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
@@ -55,11 +53,19 @@ const ContactSection: React.FC = () => {
     e.preventDefault();
     setSubmitMessage(null);
     if (!validate()) return;
+
+    // Add a check to ensure environment variables are loaded correctly
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error('EmailJS environment variables are not set correctly. Check your .env.local file.');
+      setSubmitMessage('The contact form is not configured correctly. Please contact the site owner directly.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
+      const result = await emailjs.send(
+        SERVICE_ID as string,
+        TEMPLATE_ID as string,
         {
           to_name: "Milan Singhal",
           from_name: formData.name,
@@ -68,6 +74,7 @@ const ContactSection: React.FC = () => {
         },
         PUBLIC_KEY
       );
+      console.log('SUCCESS!', result.status, result.text);
       setSubmitMessage('Your message has been sent successfully! I will get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
       setErrors({});

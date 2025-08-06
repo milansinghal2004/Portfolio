@@ -26,17 +26,15 @@
     <!-- The main CSS file (src/index.css) will be injected by Vite during build -->
   <script type="importmap">
 {
+  // Aligned versions with package.json and removed unnecessary build-tool entries.
   "imports": {
-    "react": "https://esm.sh/react@^19.1.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.5.1",
-    "vite": "https://esm.sh/vite@^6.3.5",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.5.2"
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@^18.2.0/client",
+    "emailjs-com": "https://esm.sh/emailjs-com@^3.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.5.1"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
