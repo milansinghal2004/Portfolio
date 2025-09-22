@@ -48,6 +48,20 @@ export const publications: Publication[] = [
     pdfUrl: 'https://www.ijert.org/research/sign-language-recognition-IJERTV14IS040033.pdf'
   },
   {
+    id: '4',
+    title: 'Air Canvas: A Computer Vision Model',
+    authors: ['Milan Singhal'],
+    year: '2025',
+    description: 'Research on an air-drawing system that lets users draw in mid-air using real-time hand tracking and computer vision, with trajectories rendered onto a virtual canvas.',
+    abstract: 'The paper involves the presentation of the design and execution of such a real-time human-computer interaction (HCI) system as the Air Canvas where people virtually draw on a digital canvas through in-air gestures and voice commands. This will mainly be used to develop an easy to understand and touch-less interface that will explore beyond the conventional input devices by enables natural user interactions to be used to create digitally.',
+    keywords: ['Computer Vision', 'Hand Tracking', 'Human–Computer Interaction', 'OpenCV', 'Air Canvas', 'Gesture Recognition'],
+    type: 'journal',
+    status: 'in-progress',
+    // impact: 'Under review for publication in top-tier computer vision journal',
+    url: 'https://www.ijert.org/air-canvas-a-computer-vision-model',
+    pdfUrl: 'https://www.ijert.org/research/air-canvas-a-computer-vision-model-IJERTV14IS070230.pdf'
+  },
+  {
     id: '1',
     title: 'Mars Colonization: A Comprehensive Analysis of Robotic Systems and Autonomous Navigation',
     authors: ['Milan Singhal'],

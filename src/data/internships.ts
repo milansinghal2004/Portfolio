@@ -31,7 +31,7 @@ export const internships: Internship[] = [
       'Applied IT fundamentals to solve complex data warehousing challenges'
     ],
     technologies: ['IT Fundamentals', 'Oracle', 'Data Science', 'Database Management', 'SQL', 'Python'],
-    logo: 'PwC.jpg',
+    logo: '/Pwc.jpg',
     companyUrl: 'https://www.pwc.com'
   },
   {
@@ -49,7 +49,7 @@ export const internships: Internship[] = [
       'Contributed to research on AI-driven quality improvement methodologies'
     ],
     technologies: ['Machine Learning', 'Python', 'TensorFlow', 'Scikit-learn', 'Data Preprocessing', 'Quality Assurance', 'Predictive Analytics'],
-    logo: 'quality-ai-logo.png',
+    logo: '/Quality_AI_Logo.png',
     companyUrl: 'https://www.qualityai.com'
   },
   {
@@ -67,7 +67,7 @@ export const internships: Internship[] = [
       'Contributed to the development of space robotics simulation models'
     ],
     technologies: ['Robotics', 'Space Technology', 'Research & Development', 'Autonomous Systems', 'Mars Colonization', 'Simulation', 'Technical Writing'],
-    logo: 'cosmofleet-logo.png',
+    logo: '/CosmoFleet logo.jpg',
     companyUrl: 'https://www.cosmofleet.com'
   },
   {

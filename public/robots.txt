@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
-Sitemap: https://portfolio-milansinghal.netlify.app/sitemap.xml 
+Disallow:
+
+Sitemap: https://portfolio-milansinghal.netlify.app/sitemap.xml

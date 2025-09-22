@@ -82,15 +82,15 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({
         {publications.length === 0 ? (
           <p className="text-center text-text-light/70 dark:text-text-dark/70">No publications to display yet.</p>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {publications.map((publication, index) => (
               <div 
                 key={publication.id} 
-                className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`h-full transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{transitionDelay: isVisible ? `${index * 200 + 200}ms` : '0ms'}}
               >
-                <div className="bg-card-light dark:bg-card-dark rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group border border-border-light dark:border-border-dark">
-                  <div className="p-6">
+                <div className="h-full bg-card-light dark:bg-card-dark rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group border border-border-light dark:border-border-dark flex flex-col">
+                  <div className="p-6 flex flex-col h-full">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-2">
@@ -150,7 +150,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({
                       </div>
                     </div>
 
-                    <div className="flex space-x-3">
+                    <div className="flex space-x-3 mt-auto">
                       <Button 
                         onClick={() => handleViewDetails(publication)} 
                         variant="primary" 

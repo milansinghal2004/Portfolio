@@ -64,8 +64,8 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
     try {
       const result = await emailjs.send(
-        SERVICE_ID as string,
-        TEMPLATE_ID as string,
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
           to_name: "Milan Singhal",
           from_name: formData.name,

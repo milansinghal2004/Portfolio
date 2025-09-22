@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
           <AnimatedText text="Code. Design. Connect." />
         </div>
         <p className="text-lg md:text-xl text-text-light/80 dark:text-text-dark/80 max-w-2xl mx-auto mb-10">
-        Craftingthoughtful digital experiences where intuitive design, intelligent systems, and innovative thinking meet bridging aesthetics with purpose to make technology feel effortless and human.
+        Crafting thoughtful digital experiences where intuitive design, intelligent systems, and innovative thinking meet bridging aesthetics with purpose to make technology feel effortless and human.
         </p>
         <div className="space-x-4 mb-8">
           <Button 
