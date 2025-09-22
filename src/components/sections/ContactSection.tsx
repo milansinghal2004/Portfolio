@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 interface FormData {
   name: string;
