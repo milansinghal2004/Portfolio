@@ -28,4 +28,13 @@ export const initialProjects: Project[] = [
     repoUrl: 'https://github.com/milansinghal2004/Stock-Price-Anomaly-Detection-using-Z-Score-',
     liveUrl: '#',
   },
+  {
+    id: '4',
+    name: 'RepoForge',
+    description: 'An AI-assisted repository enhancement platform that analyzes project structure, generates architecture-aware documentation, reorganizes files intelligently, and enforces Python code quality through an automated Streamlit workflow.',
+    imageUrl: '/RepoForgeBanner.png',
+    tags: ['Python', 'Streamlit', 'Gemini API', 'Autopep8', 'Flake8', 'Pylint'],
+    repoUrl: '#',
+    liveUrl: '#',
+  },
 ];
