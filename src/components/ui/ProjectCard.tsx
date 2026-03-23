@@ -16,17 +16,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
 
   return (
     <div 
-      className="bg-card-light dark:bg-card-dark rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group flex flex-col h-full border border-border-light dark:border-border-dark"
+      className="group isolate rounded-xl bg-card-light dark:bg-card-dark shadow-lg overflow-hidden flex flex-col h-full border border-border-light dark:border-border-dark
+        motion-safe:transition-[box-shadow,transform,border-color] motion-safe:duration-300
+        hover:shadow-2xl hover:-translate-y-1.5 hover:border-primary/40 dark:hover:border-primary-light/45
+        active:scale-[0.99] motion-reduce:transform-none motion-reduce:transition-none
+        focus-within:border-primary/55 dark:focus-within:border-primary-light/55 focus-within:shadow-xl"
     >
-      <div className="relative h-48 w-full overflow-hidden">
+      <div className="relative h-48 w-full overflow-hidden shrink-0">
         <img 
           src={project.imageUrl || 'https://picsum.photos/600/400?grayscale'} 
           alt={`Project: ${project.name}`} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-        <div className="absolute top-4 right-4">
-          <div className="bg-primary/90 dark:bg-primary-light/90 text-white px-2 py-1 rounded-full text-xs font-medium">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80 group-hover:opacity-100 motion-safe:transition-opacity duration-300" />
+        <div className="absolute top-3 right-3">
+          <div className="bg-primary/95 dark:bg-primary-light/95 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-md motion-safe:transition-transform group-hover:scale-105">
             {project.tags.length} tech
           </div>
         </div>

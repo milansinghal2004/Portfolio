@@ -56,8 +56,8 @@ export const publications: Publication[] = [
     abstract: 'The paper involves the presentation of the design and execution of such a real-time human-computer interaction (HCI) system as the Air Canvas where people virtually draw on a digital canvas through in-air gestures and voice commands. This will mainly be used to develop an easy to understand and touch-less interface that will explore beyond the conventional input devices by enables natural user interactions to be used to create digitally.',
     keywords: ['Computer Vision', 'Hand Tracking', 'Human–Computer Interaction', 'OpenCV', 'Air Canvas', 'Gesture Recognition'],
     type: 'journal',
-    status: 'in-progress',
-    // impact: 'Under review for publication in top-tier computer vision journal',
+    status: 'published',
+    impact: 'Published in IJERT Volume 14, Issue 7',
     url: 'https://www.ijert.org/air-canvas-a-computer-vision-model',
     pdfUrl: 'https://www.ijert.org/research/air-canvas-a-computer-vision-model-IJERTV14IS070230.pdf'
   },
