@@ -2,6 +2,10 @@
 
 A modern, interactive developer portfolio for **Milan Singhal** — Machine Learning and Computer Vision Enthusiast. Built with React, TypeScript, and Tailwind CSS, this portfolio showcases Milan's projects, research, skills, internships, and more with beautiful, responsive design and smooth animations.
 
+🔗 **Live Demo:** https://portfolio-milansinghal.netlify.app
+
+⭐ If you like this project, consider giving it a star!
+
 ---
 
 ## 👤 About Me
