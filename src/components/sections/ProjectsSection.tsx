@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Project } from '../../types';
 import ProjectCard from '../ui/ProjectCard';
 import Modal from '../ui/Modal';
@@ -20,9 +20,18 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ref, isVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.1, triggerOnce: true });
-  /** Pauses marquee while pointer is over a project card */
+  
+  // Marquee pause state
   const [marqueePaused, setMarqueePaused] = useState(false);
   const resumeMarqueeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Dragging state and refs
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDown, setIsDown] = useState(false);
+  const [hasDragged, setHasDragged] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     setProjects(initialProjects);
@@ -31,10 +40,73 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
   useEffect(() => {
     return () => {
       if (resumeMarqueeTimer.current) clearTimeout(resumeMarqueeTimer.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
+  // Auto-scrolling logic
+  const autoScroll = useCallback(() => {
+    if (scrollRef.current && !marqueePaused && !isDown && isVisible) {
+      scrollRef.current.scrollLeft += 1; // Animation speed
+
+      // Loop trick: if we've scrolled past the first set of items, snap back instantly
+      if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+        scrollRef.current.scrollLeft -= scrollRef.current.scrollWidth / 2;
+      }
+    }
+    rafRef.current = requestAnimationFrame(autoScroll);
+  }, [marqueePaused, isDown, isVisible]);
+
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(autoScroll);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [autoScroll]);
+
+  // Drag Handlers
+  const onDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDown(true);
+    setHasDragged(false);
+    if (scrollRef.current) {
+      const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+      setStartX(pageX - scrollRef.current.offsetLeft);
+      setScrollLeft(scrollRef.current.scrollLeft);
+    }
+  };
+
+  const onDragEnd = () => {
+    setIsDown(false);
+  };
+
+  const onDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDown || !scrollRef.current) return;
+    e.preventDefault(); // Prevent text selection while dragging
+    setHasDragged(true);
+    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+    const x = pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll-fast multiplier
+    
+    let newScrollLeft = scrollLeft - walk;
+    
+    // Handle infinite scrolling backward and forward during drag
+    const halfWidth = scrollRef.current.scrollWidth / 2;
+    if (newScrollLeft < 0) {
+      newScrollLeft += halfWidth;
+      // Adjust startX and scrollLeft so the relative drag continues smoothly
+      setStartX(x);
+      setScrollLeft(newScrollLeft);
+    } else if (newScrollLeft >= halfWidth) {
+      newScrollLeft -= halfWidth;
+      setStartX(x);
+      setScrollLeft(newScrollLeft);
+    }
+    
+    scrollRef.current.scrollLeft = newScrollLeft;
+  };
+
   const handleViewDetails = (project: Project) => {
+    if (hasDragged) return; // Prevent clicking when trying to drag
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -71,8 +143,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
     </div>
   );
 
-  const animationRunning = isVisible && !marqueePaused;
-
   return (
     <section id="projects" ref={ref} className="py-20 bg-gray-50 dark:bg-slate-800 text-text-light dark:text-text-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,20 +173,25 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
             />
 
             {/*
-              Two flex rows + ml + pr so total width = 2×(row + between-gap); translateX(-50%) loops cleanly.
+              Two identical sets of items allowing seamless looping when scrollLeft hits 50%.
             */}
             <div
-              className="projects-marquee-track flex w-max items-stretch pr-6 lg:pr-8"
-              style={{
-                animationPlayState: animationRunning ? 'running' : 'paused',
-              }}
+              ref={scrollRef}
+              className={`flex w-full items-stretch overflow-x-hidden ${isDown ? 'cursor-grabbing' : 'cursor-grab'} select-none`}
+              onMouseDown={onDragStart}
+              onMouseLeave={onDragEnd}
+              onMouseUp={onDragEnd}
+              onMouseMove={onDragMove}
+              onTouchStart={onDragStart}
+              onTouchEnd={onDragEnd}
+              onTouchMove={onDragMove}
               role="list"
               aria-label="Projects"
             >
-              <div className="flex shrink-0 gap-6 lg:gap-8">
+              <div className="flex shrink-0 gap-6 lg:gap-8 pr-6 lg:pr-8">
                 {projects.map((project) => renderCard(project, project.id))}
               </div>
-              <div className="ml-6 flex shrink-0 gap-6 lg:ml-8 lg:gap-8">
+              <div className="flex shrink-0 gap-6 lg:gap-8 pr-6 lg:pr-8 border-l border-transparent">
                 {projects.map((project) => renderCard(project, `${project.id}-dup`))}
               </div>
             </div>

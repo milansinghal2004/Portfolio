@@ -86,24 +86,3 @@ html.dark ::selection {
   animation: fadeInUp 0.3s ease-out forwards;
 }
 
-/* Projects: infinite horizontal marquee (pause via animation-play-state on hover) */
-@keyframes projects-marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.projects-marquee-track {
-  animation: projects-marquee 48s linear infinite;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .projects-marquee-track {
-    animation: none;
-    transform: none;
-  }
-}
