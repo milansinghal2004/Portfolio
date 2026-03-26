@@ -7,10 +7,13 @@ interface SkillBarProps {
 
 const SkillBar: React.FC<SkillBarProps> = ({ skill }) => {
   return (
-    <div className="flex items-center justify-center px-4 py-2 bg-card-light dark:bg-card-dark border-2 border-border-light dark:border-border-dark rounded-lg shadow-sm group-hover/cat:border-emerald-400/60 group-hover/cat:shadow-[0_0_20px_rgba(52,211,153,0.25)] group-hover/cat:-translate-y-0.5 transition-all duration-300 cursor-default w-auto">
-      <span className="text-xs md:text-sm font-semibold text-text-light dark:text-text-dark group-hover/cat:text-emerald-600 dark:group-hover/cat:text-emerald-400 uppercase tracking-widest leading-snug text-center transition-colors">
-        {skill.name}
-      </span>
+    <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-background-light dark:bg-[#151e32] text-text-light dark:text-slate-300 text-xs md:text-sm font-semibold rounded-xl border border-border-light dark:border-slate-700/50 hover:text-text-dark dark:hover:text-white hover:border-primary/40 dark:hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-default z-30">
+      {skill.icon && (
+        <span className="opacity-90 flex items-center justify-center">
+          {skill.icon}
+        </span>
+      )}
+      <span className="tracking-wide">{skill.name}</span>
     </div>
   );
 };
