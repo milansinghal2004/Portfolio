@@ -30,7 +30,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
   const [isDown, setIsDown] = useState(false);
   const [hasDragged, setHasDragged] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [startPageX, setStartPageX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const exactScrollLeft = useRef<number>(0);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -47,12 +49,19 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
   // Auto-scrolling logic
   const autoScroll = useCallback(() => {
     if (scrollRef.current && !marqueePaused && !isDown && isVisible) {
-      scrollRef.current.scrollLeft += 1; // Animation speed
-
-      // Loop trick: if we've scrolled past the first set of items, snap back instantly
-      if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
-        scrollRef.current.scrollLeft -= scrollRef.current.scrollWidth / 2;
+      // Sync exact floating point ref if user dragged manually
+      if (Math.abs(exactScrollLeft.current - scrollRef.current.scrollLeft) > 5) {
+        exactScrollLeft.current = scrollRef.current.scrollLeft;
       }
+      
+      exactScrollLeft.current -= 0.5; // Smooth fractional animation speed, reverse direction
+
+      // Loop trick: if we scroll backwards past 0, jump to the middle seamlessly
+      if (exactScrollLeft.current <= 0 && scrollRef.current.scrollWidth > 0) {
+        exactScrollLeft.current += scrollRef.current.scrollWidth / 2;
+      }
+
+      scrollRef.current.scrollLeft = exactScrollLeft.current;
     }
     rafRef.current = requestAnimationFrame(autoScroll);
   }, [marqueePaused, isDown, isVisible]);
@@ -70,6 +79,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
     setHasDragged(false);
     if (scrollRef.current) {
       const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+      setStartPageX(pageX);
       setStartX(pageX - scrollRef.current.offsetLeft);
       setScrollLeft(scrollRef.current.scrollLeft);
     }
@@ -81,9 +91,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
 
   const onDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDown || !scrollRef.current) return;
+    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+    
+    // Ignore tiny accidental moves (less than 5px) to prevent overriding clicks
+    if (!hasDragged && Math.abs(pageX - startPageX) < 5) return;
+    
     e.preventDefault(); // Prevent text selection while dragging
     setHasDragged(true);
-    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
     const x = pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; // Scroll-fast multiplier
     

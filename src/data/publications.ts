@@ -30,7 +30,7 @@ export const publications: Publication[] = [
     status: 'published',
     impact: 'Under review for publication in top-tier computer vision journal',
     url: 'https://www.ijert.org/recognising-words-in-american-sign-language-a-yolov11-based-approach',
-    pdfUrl: 'https://www.ijert.org/research/recognising-words-in-american-sign-language-a-yolov11-based-approach-IJERTV14IS050339.pdf'
+    pdfUrl: '/research/ASL_Yolo.pdf'
   },
   {
     id: '3',
@@ -45,7 +45,7 @@ export const publications: Publication[] = [
     status: 'published',
     impact: 'Published in IJERT Volume 14, Issue 4',
     url: 'https://www.ijert.org/sign-language-recognition-2',
-    pdfUrl: 'https://www.ijert.org/research/sign-language-recognition-IJERTV14IS040033.pdf'
+    pdfUrl: '/research/Sign_Language_Recognition.pdf'
   },
   {
     id: '4',
@@ -59,7 +59,7 @@ export const publications: Publication[] = [
     status: 'published',
     impact: 'Published in IJERT Volume 14, Issue 7',
     url: 'https://www.ijert.org/air-canvas-a-computer-vision-model',
-    pdfUrl: 'https://www.ijert.org/research/air-canvas-a-computer-vision-model-IJERTV14IS070230.pdf'
+    pdfUrl: '/research/Air_Canvas.pdf'
   },
   {
     id: '1',
@@ -74,5 +74,6 @@ export const publications: Publication[] = [
     status: 'published',
     impact: 'Contributed to space colonization research community',
     url: 'https://www.researchgate.net/publication/382399185_MARS_COLONIZATION',
+    pdfUrl: '/research/Mars_Colonization.pdf'
   },
 ]; 

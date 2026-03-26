@@ -5,9 +5,10 @@ interface ModalProps {
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
+  maxWidthClass?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, maxWidthClass = "max-w-lg" }) => {
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -37,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       aria-labelledby={title ? "modal-title" : undefined}
     >
       <div
-        className="bg-card-light dark:bg-card-dark rounded-lg shadow-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto transform transition-all duration-300 ease-out animate-fade-in-up"
+        className={`bg-card-light dark:bg-card-dark rounded-lg shadow-xl p-6 w-full ${maxWidthClass} max-h-[90vh] overflow-y-auto transform transition-all duration-300 ease-out animate-fade-in-up`}
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
       >
         <div className="flex justify-between items-center mb-4">
