@@ -36,9 +36,15 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication, onViewDe
         focus-within:border-primary/55 dark:focus-within:border-primary-light/55 focus-within:shadow-xl"
     >
       <div className="relative h-48 w-full overflow-hidden shrink-0 bg-white dark:bg-slate-800">
-        {publication.pdfUrl ? (
+        {publication.coverImage ? (
+          <img
+            src={publication.coverImage}
+            alt={`Cover of ${publication.title}`}
+            className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
+          />
+        ) : publication.pdfUrl ? (
           <div className="absolute inset-0 overflow-hidden bg-white">
-            <iframe 
+            <iframe
               src={`${publication.pdfUrl}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH,9999`}
               title={`Preview of ${publication.title}`}
               className="absolute top-[-30px] left-[-15px] w-[900px] h-[1000px] origin-top-left scale-[0.42] sm:scale-[0.45] lg:scale-[0.46] pointer-events-none border-none bg-white z-0"
@@ -48,16 +54,16 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication, onViewDe
           </div>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 bg-slate-200 dark:bg-slate-800">
-             <svg className="w-12 h-12 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-             </svg>
-             <span className="text-sm font-medium">PDF Pending</span>
+            <svg className="w-12 h-12 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="text-sm font-medium">PDF Pending</span>
           </div>
         )}
-        
-        {/* Gradient overlay for readability and styling */}
+
+        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-90 group-hover:opacity-100 motion-safe:transition-opacity duration-300 pointer-events-none" />
-        
+
         <div className="absolute top-3 right-3 pointer-events-none">
           <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold shadow-md motion-safe:transition-transform group-hover:scale-105 ${getStatusColor(publication.status)}`}>
             {publication.status.charAt(0).toUpperCase() + publication.status.slice(1)}
