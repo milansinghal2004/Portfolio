@@ -37,13 +37,13 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skillData = skillCategori
         <div className="absolute top-[30%] left-0 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[120px] opacity-50 pointer-events-none -z-10" />
         <div className="absolute top-[30%] right-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[120px] opacity-50 pointer-events-none -z-10" />
 
-        {/* Cards Grid — 1 col on mobile, 2 on md, 3 on lg */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10 w-full">
+        {/* Cards Container — Horizontal scroll on mobile, Grid on md+ */}
+        <div className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-6 -mx-4 px-4 gap-5 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:mx-0 md:px-0 relative z-10 w-full scrollbar-hide">
           {skillData.map((category: SkillCategory, index: number) => (
             <div
               key={category.name}
               onMouseMove={handleMouseMove}
-              className={`group isolate bg-border-light/80 dark:bg-slate-800/80 relative p-[2px] rounded-3xl shadow-md dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`snap-center shrink-0 w-[min(85vw,350px)] md:w-full group isolate bg-border-light/80 dark:bg-slate-800/80 relative p-[2px] rounded-3xl shadow-md dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
             >
               {/* Glowing border tracker */}
