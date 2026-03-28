@@ -46,7 +46,10 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-40 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md shadow-sm transition-colors duration-300">
+    <nav className={`sticky top-0 z-40 w-full backdrop-blur-md shadow-sm transition-all duration-500 ${activeSection === '#hero'
+        ? 'bg-background-light/80 dark:bg-background-dark/80'
+        : 'bg-background-light/60 dark:bg-background-dark/60'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center h-16">
           <div className="hidden md:flex items-center space-x-12">
@@ -54,11 +57,10 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeSection === link.href
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === link.href
                     ? 'text-primary dark:text-primary-light font-semibold'
                     : 'text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary-light hover:bg-gray-200/50 dark:hover:bg-gray-700/50'
-                }`}
+                  }`}
               >
                 {link.label}
               </a>
@@ -98,11 +100,10 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  activeSection === link.href
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${activeSection === link.href
                     ? 'text-primary dark:text-primary-light font-semibold bg-primary/10 dark:bg-primary/5'
                     : 'text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
+                  }`}
               >
                 {link.label}
               </a>

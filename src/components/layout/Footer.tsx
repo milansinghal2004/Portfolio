@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer className="bg-gradient-to-r from-background-light via-gray-50 to-background-light dark:from-background-dark dark:via-slate-800 dark:to-background-dark border-t border-border-light dark:border-border-dark">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand Section */}
           <div className="text-center md:text-left">
             <h3 className="text-xl font-bold text-text-light dark:text-text-dark mb-4">
@@ -35,11 +35,11 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="text-center md:text-left">
+          <div className="text-center">
             <h4 className="text-lg font-semibold text-text-light dark:text-text-dark mb-4">
               Quick Links
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 inline-block text-left">
               {[
                 { href: '#about', label: 'About Me' },
                 { href: '#skills', label: 'Skills' },
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left md:pl-8">
             <h4 className="text-lg font-semibold text-text-light dark:text-text-dark mb-4">
               Get In Touch
             </h4>

@@ -96,10 +96,10 @@ const ContactSection: React.FC = () => {
             Have a project in mind, a question, or just want to say hi? Feel free to reach out!
           </p>
         </div>
-        <form 
-          onSubmit={handleSubmit} 
+        <form
+          onSubmit={handleSubmit}
           className={`bg-card-light dark:bg-card-dark p-8 rounded-xl shadow-2xl space-y-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          style={{transitionDelay: isVisible ? `200ms` : '0ms'}}
+          style={{ transitionDelay: isVisible ? `200ms` : '0ms' }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Input
@@ -107,7 +107,7 @@ const ContactSection: React.FC = () => {
               id="name"
               name="name"
               type="text"
-              placeholder="John Doe"
+              placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
               error={errors.name}
