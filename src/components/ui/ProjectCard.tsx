@@ -39,25 +39,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
         <h3 className="text-xl font-semibold mb-2 text-text-light dark:text-text-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
           {project.name}
         </h3>
-        <p className="text-sm text-text-light/80 dark:text-text-dark/80 mb-4 line-clamp-3 flex-grow">
+        <p className="text-sm text-text-light/80 dark:text-text-dark/80 mb-4 line-clamp-3">
           {project.description}
         </p>
-        <div className="mb-4">
-          {project.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-light text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-          {project.tags.length > 3 && (
-            <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full">
-              +{project.tags.length - 3} more
-            </span>
-          )}
-        </div>
-        <div className="mt-auto space-y-2">
+        <div className="mt-auto">
+          <div className="mb-3">
+            {project.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="inline-block bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-light text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+            {project.tags.length > 3 && (
+              <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                +{project.tags.length - 3} more
+              </span>
+            )}
+          </div>
+          <div className="space-y-2">
           <Button 
             onClick={handleViewDetails} 
             variant="primary" 
@@ -92,7 +93,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
               </Button>
             )}
           </div>
-        </div>
+          </div> {/* end space-y-2 */}
+        </div> {/* end mt-auto */}
       </div>
     </div>
   );

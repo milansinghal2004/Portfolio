@@ -10,10 +10,10 @@ interface InternshipsSectionProps {
 
 // PwC = orange, Quality AI = white, Cosmofleet = golden, ACM = electric blue
 const ACCENT_COLORS = [
-  { border: '#f97316', tag: 'rgba(249,115,22,0.15)',  tagText: '#fdba74' },   // PwC — orange
-  { border: '#e2e8f0', tag: 'rgba(226,232,240,0.10)', tagText: '#cbd5e1' },   // Quality AI — white
-  { border: '#eab308', tag: 'rgba(234,179,8,0.15)',   tagText: '#fde047' },   // Cosmofleet — golden
-  { border: '#00b4ff', tag: 'rgba(0,180,255,0.15)',   tagText: '#7dd3fc' },   // ACM — electric blue
+  { border: '#f97316', tag: 'rgba(249,115,22,0.15)',  tagText: '#fdba74' },
+  { border: '#e2e8f0', tag: 'rgba(226,232,240,0.10)', tagText: '#cbd5e1' },
+  { border: '#eab308', tag: 'rgba(234,179,8,0.15)',   tagText: '#fde047' },
+  { border: '#00b4ff', tag: 'rgba(0,180,255,0.15)',   tagText: '#7dd3fc' },
 ];
 
 const InternshipsSection: React.FC<InternshipsSectionProps> = ({ internships = [] }) => {
@@ -87,8 +87,10 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({ internships = [
                           </p>
                         </div>
                         {internship.logo && (
-                          <div className="w-10 h-10 rounded-lg flex items-center justify-center ml-3 flex-shrink-0"
-                            style={{ background: 'rgba(255,255,255,0.07)' }}>
+                          <div
+                            className="w-10 h-10 rounded-lg flex items-center justify-center ml-3 flex-shrink-0"
+                            style={{ background: 'rgba(255,255,255,0.07)' }}
+                          >
                             <img src={internship.logo} alt={`${internship.company} logo`} className="w-7 h-7 object-contain" />
                           </div>
                         )}
@@ -116,51 +118,52 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({ internships = [
                         {internship.description}
                       </p>
 
-                      {/* Tech tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {internship.technologies.slice(0, 4).map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs font-medium px-2.5 py-0.5 rounded-full"
-                            style={{ background: accent.tag, color: accent.tagText }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {internship.technologies.length > 4 && (
-                          <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-white/5 text-text-light/40 dark:text-text-dark/40">
-                            +{internship.technologies.length - 4} more
-                          </span>
-                        )}
-                      </div>
+                      {/* Tags + Button anchored together at bottom */}
+                      <div className="mt-auto">
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {internship.technologies.slice(0, 4).map((tech) => (
+                            <span
+                              key={tech}
+                              className="text-xs font-medium px-2.5 py-0.5 rounded-full"
+                              style={{ background: accent.tag, color: accent.tagText }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {internship.technologies.length > 4 && (
+                            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-white/5 text-text-light/40 dark:text-text-dark/40">
+                              +{internship.technologies.length - 4} more
+                            </span>
+                          )}
+                        </div>
 
-                      {/* Actions — pushed to bottom */}
-                      <div className="flex gap-2 mt-auto">
-                        <button
-                          onClick={() => handleViewDetails(internship)}
-                          className="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-text-light/90 dark:text-text-dark/90 hover:text-text-light dark:hover:text-text-dark"
-                          style={{
-                            background: `linear-gradient(135deg, ${accent.border}25, ${accent.border}10)`,
-                            border: `1px solid ${accent.border}35`,
-                          }}
-                          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${accent.border}45, ${accent.border}25)`; }}
-                          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${accent.border}25, ${accent.border}10)`; }}
-                        >
-                          View Details
-                        </button>
-                        {internship.companyUrl && (
-                          <a
-                            href={internship.companyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 text-text-light/40 dark:text-text-dark/40 hover:text-text-light dark:hover:text-text-dark"
-                            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleViewDetails(internship)}
+                            className="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 text-text-light/90 dark:text-text-dark/90 hover:text-text-light dark:hover:text-text-dark"
+                            style={{
+                              background: `linear-gradient(135deg, ${accent.border}25, ${accent.border}10)`,
+                              border: `1px solid ${accent.border}35`,
+                            }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${accent.border}45, ${accent.border}25)`; }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${accent.border}25, ${accent.border}10)`; }}
                           >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                          </a>
-                        )}
+                            View Details
+                          </button>
+                          {internship.companyUrl && (
+                            <a
+                              href={internship.companyUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 text-text-light/40 dark:text-text-dark/40 hover:text-text-light dark:hover:text-text-dark"
+                              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+                            >
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

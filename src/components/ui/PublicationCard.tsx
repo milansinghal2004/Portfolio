@@ -69,46 +69,48 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication, onViewDe
         <h3 className="text-xl font-semibold mb-2 text-text-light dark:text-text-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors line-clamp-2" title={publication.title}>
           {publication.title}
         </h3>
-        <p className="text-sm text-text-light/80 dark:text-text-dark/80 mb-4 line-clamp-3 flex-grow">
+        <p className="text-sm text-text-light/80 dark:text-text-dark/80 mb-4 line-clamp-3">
           {publication.description}
         </p>
-        <div className="mb-4">
-          {publication.keywords.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-light text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-          {publication.keywords.length > 3 && (
-            <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full">
-              +{publication.keywords.length - 3} more
-            </span>
-          )}
-        </div>
-        <div className="mt-auto space-y-2">
-          <Button 
-            onClick={handleViewDetails} 
-            variant="primary" 
-            size="sm" 
-            className="w-full group-hover:scale-105 transition-transform duration-200"
-          >
-            Read Paper
-          </Button>
-          <div className="flex space-x-2">
-            {publication.url && (
-              <Button 
-                href={publication.url} 
-                variant="outline" 
-                size="sm" 
-                className="flex-1"
-                target="_blank"
-                rel="noopener noreferrer"
+        <div className="mt-auto">
+          <div className="mb-3">
+            {publication.keywords.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="inline-block bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-light text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full"
               >
-                Journal Link
-              </Button>
+                {tag}
+              </span>
+            ))}
+            {publication.keywords.length > 3 && (
+              <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                +{publication.keywords.length - 3} more
+              </span>
             )}
+          </div>
+          <div className="space-y-2">
+            <Button 
+              onClick={handleViewDetails} 
+              variant="primary" 
+              size="sm" 
+              className="w-full group-hover:scale-105 transition-transform duration-200"
+            >
+              Read Paper
+            </Button>
+            <div className="flex space-x-2">
+              {publication.url && (
+                <Button 
+                  href={publication.url} 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Journal Link
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
