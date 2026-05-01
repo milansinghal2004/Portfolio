@@ -4,6 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Portfolio/',
+  base: process.env.GITHUB_ACTIONS ? '/Portfolio/' : '/',
   plugins: [react(), tsconfigPaths()],
 })
