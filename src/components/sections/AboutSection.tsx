@@ -1,5 +1,6 @@
 import React from 'react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { getAssetUrl } from '../../utils/assetUrl';
 
 const AboutSection: React.FC = () => {
   const [ref, isVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.2, triggerOnce: true });
@@ -21,7 +22,7 @@ const AboutSection: React.FC = () => {
             style={{transitionDelay: isVisible ? '200ms' : '0ms'}}
           >
             <img
-              src="MyPic.jpg"
+              src={getAssetUrl("MyPic.jpg")}
               alt="Developer Avatar"
               className="rounded-full shadow-2xl w-64 h-64 md:w-80 md:h-80 mx-auto object-cover border-4 border-primary dark:border-primary-light animate-pulse-subtle"
             />

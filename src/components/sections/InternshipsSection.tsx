@@ -3,6 +3,7 @@ import { Internship } from '../../data/internships';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
+import { getAssetUrl } from '../../utils/assetUrl';
 
 interface InternshipsSectionProps {
   internships?: Internship[];
@@ -91,7 +92,7 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({ internships = [
                             className="w-10 h-10 rounded-lg flex items-center justify-center ml-3 flex-shrink-0"
                             style={{ background: 'rgba(255,255,255,0.07)' }}
                           >
-                            <img src={internship.logo} alt={`${internship.company} logo`} className="w-7 h-7 object-contain" />
+                            <img src={getAssetUrl(internship.logo)} alt={`${internship.company} logo`} className="w-7 h-7 object-contain" />
                           </div>
                         )}
                       </div>
@@ -196,7 +197,7 @@ const InternshipsSection: React.FC<InternshipsSectionProps> = ({ internships = [
               </div>
               {selectedInternship.logo && (
                 <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-                  <img src={selectedInternship.logo} alt={`Logo of ${selectedInternship.company}`} className="w-12 h-12 object-contain" />
+                  <img src={getAssetUrl(selectedInternship.logo)} alt={`Logo of ${selectedInternship.company}`} className="w-12 h-12 object-contain" />
                 </div>
               )}
             </div>

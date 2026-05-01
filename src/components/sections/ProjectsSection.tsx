@@ -5,6 +5,7 @@ import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import { initialProjects as defaultInitialProjects } from '../../data/projects';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { getAssetUrl } from '../../utils/assetUrl';
 // Uncomment if GitHubRepoForm is to be used
 // import GitHubRepoForm from '../features/GitHubRepoForm';
 
@@ -217,7 +218,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ initialProjects = def
         <Modal isOpen={isModalOpen} onClose={handleCloseModal} title={selectedProject.name}>
           <div className="space-y-4">
             <img
-              src={selectedProject.imageUrl || 'https://picsum.photos/600/400?grayscale'}
+              src={selectedProject.imageUrl ? getAssetUrl(selectedProject.imageUrl) : 'https://picsum.photos/600/400?grayscale'}
               alt={`Project: ${selectedProject.name}`}
               className="w-full h-64 object-cover rounded-lg mb-4"
             />

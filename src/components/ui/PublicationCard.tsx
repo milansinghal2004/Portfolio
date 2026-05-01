@@ -1,6 +1,7 @@
 import React from 'react';
 import { Publication } from '../../data/publications';
 import Button from './Button';
+import { getAssetUrl } from '../../utils/assetUrl';
 
 interface PublicationCardProps {
   publication: Publication;
@@ -38,14 +39,14 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication, onViewDe
       <div className="relative h-48 w-full overflow-hidden shrink-0 bg-white dark:bg-slate-800">
         {publication.coverImage ? (
           <img
-            src={publication.coverImage}
+            src={getAssetUrl(publication.coverImage)}
             alt={`Cover of ${publication.title}`}
             className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
           />
         ) : publication.pdfUrl ? (
           <div className="absolute inset-0 overflow-hidden bg-white">
             <iframe
-              src={`${publication.pdfUrl}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH,9999`}
+              src={`${getAssetUrl(publication.pdfUrl)}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH,9999`}
               title={`Preview of ${publication.title}`}
               className="absolute top-[-30px] left-[-15px] w-[900px] h-[1000px] origin-top-left scale-[0.42] sm:scale-[0.45] lg:scale-[0.46] pointer-events-none border-none bg-white z-0"
               scrolling="no"

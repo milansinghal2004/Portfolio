@@ -1,6 +1,7 @@
 import React from 'react';
 import { Project } from '../../types';
 import Button from './Button';
+import { getAssetUrl } from '../../utils/assetUrl';
 
 interface ProjectCardProps {
   project: Project;
@@ -24,7 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
     >
       <div className="relative h-48 w-full overflow-hidden shrink-0">
         <img 
-          src={project.imageUrl || 'https://picsum.photos/600/400?grayscale'} 
+          src={project.imageUrl ? getAssetUrl(project.imageUrl) : 'https://picsum.photos/600/400?grayscale'} 
           alt={`Project: ${project.name}`} 
           className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
         />
